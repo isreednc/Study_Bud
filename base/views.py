@@ -1,5 +1,4 @@
 # Views are functions that take a web request and return a web response
-
 from django.shortcuts import redirect, render
 from django.http import HttpResponse
 from django.db.models import Q
@@ -32,9 +31,15 @@ def loginPage(request):
         if user is not None:
             login(request, user)
             return redirect('home') #return user to the home page
+        else:
+            messages.error(request, 'Username or password does not exist')
 
     context = {}
     return render(request, 'base/login_register.html', context)
+
+def logoutUser(request):
+    logout(request)
+    return redirect('home')
 
 def home(request):
     q = request.GET.get('q') if request.GET.get('q') != None else ''
