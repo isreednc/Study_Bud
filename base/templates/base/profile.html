@@ -9,13 +9,15 @@
     }
 </style>
 
+<h1>{{user.username}}</h1>
+
 <div class="profile-container">
     <div>
         {% include 'base/topics_component.html' %}
     </div>
 
     <div>
-        <h1>{{user.username}}</h1>
+        {% include 'base/feed_component.html' %}
     </div>
 
     <div>
